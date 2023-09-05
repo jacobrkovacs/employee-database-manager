@@ -6,10 +6,10 @@ VALUES ("Customer Service"),
        ("Accounting");
 
 INSERT INTO role (title, salary, department_id)
-VALUES ("Help Desk", 60000, 1),
+VALUES ("Help Desk", 50000, 1),
        ("Live Chat Rep", 50000, 1),
        ("Junior Sales Rep", 70000, 2),
-       ("Senior Sales Rep", 85000, 2),
+       ("Senior Sales Rep", 80000, 2),
        ("Researcher", 80000, 3),
        ("Developer", 80000, 3),
        ("In-house Council", 85000, 4),
