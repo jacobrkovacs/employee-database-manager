@@ -29,7 +29,7 @@ async function addRole() {
             }
         ])
         .then((response) => {
-            db.query(`INSERT INTO role (title, salary, department_id) VALUES ("${response.title}", ${Number(response.salary)}, ${Number(response.dept)})`, (err,result) => {
+            db.query(`INSERT INTO role (title, salary, department_id) VALUES ("${response.title}", ${response.salary}, ${response.dept})`, (err,result) => {
                 if(err) {
                     console.error(err)
                 };
