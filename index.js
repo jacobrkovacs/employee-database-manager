@@ -7,16 +7,15 @@ const addEmployee = require("./functions/addEmployee.js");
 const main = async () => {
     await mainMenu()
     .then((response) => {
-        switch (response.choice){
+        switch (response.choice) {
             case 'View All Departments':
                 getDept();
-                main();
                 break;
             case 'View All Roles':
                 getRoles();
                 break;
             case 'View All Employees':
-                getEmployees();
+                getEmployees()
                 break;
             case 'Add a Role':
                 addRole();
@@ -32,5 +31,6 @@ const main = async () => {
                 exit();
         }
     });
+    await main();
 }
 main();
