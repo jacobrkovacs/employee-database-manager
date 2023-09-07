@@ -10,7 +10,7 @@ const db = mysql.createConnection(
 );
 
 function addEmployee() {
-    inquirer.createPromptModule([
+    inquirer.prompt([
         {
             type: 'input',
             message: 'Employee First Name: ',

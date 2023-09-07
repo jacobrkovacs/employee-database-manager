@@ -8,7 +8,7 @@ function mainMenu() {
             name: 'choice',
             choices: ['View All Departments', 'View All Roles', 'View All Employees', 'Add a Role', 'Add an Employee', 'Update an Employee Role', 'Exit']
         }
-    ])
-}
+    ]);
+};
 
 module.exports = mainMenu;

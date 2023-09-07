@@ -35,6 +35,6 @@ async function addRole() {
                 console.log(result);
             });
         });
-}
+};
 
 module.exports = addRole;

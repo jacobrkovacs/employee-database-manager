@@ -2,13 +2,15 @@ const [ getDept, getRoles, getEmployees ] = require('./functions/getTables.js');
 const addRole = require('./functions/addRole.js');
 const { exit } = require("process");
 const mainMenu = require("./functions/mainMenu.js");
+const addEmployee = require("./functions/addEmployee.js");
 
 const main = async () => {
-    mainMenu()
+    await mainMenu()
     .then((response) => {
         switch (response.choice){
             case 'View All Departments':
                 getDept();
+                main();
                 break;
             case 'View All Roles':
                 getRoles();
@@ -20,7 +22,7 @@ const main = async () => {
                 addRole();
                 break;
             case 'Add an Employee':
-                //addEmployee();
+                addEmployee();
                 break;
             case 'Update an Employee Role':
                 //updateEmployee();
