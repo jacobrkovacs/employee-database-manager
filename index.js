@@ -4,6 +4,8 @@ const addNewRole = require('./functions/addRole.js');
 const addEmployee = require("./functions/addEmployee.js");
 const updateEmployee = require('./functions/updateEmployee.js');
 const { exit } = require("process");
+const deleteEmployee = require('./functions/deleteEmployee')
+const deleteRole = require('./functions/deleteRole')
 
 function mainMenu() {
     inquirer.prompt([
@@ -18,6 +20,8 @@ function mainMenu() {
                 'Add a Role',
                 'Add an Employee',
                 'Update an Employee Role',
+                'Delete Employee',
+                'Delete Role',
                 'Exit'
             ]
         }
@@ -40,6 +44,12 @@ function mainMenu() {
                 break;
             case 'Update an Employee Role':
                 updateEmployee();
+                break;
+            case 'Delete Employee':
+                deleteEmployee();
+                break;
+            case 'Delete Role':
+                deleteRole();
                 break;
             case 'Exit':
                 return exit();

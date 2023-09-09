@@ -38,7 +38,6 @@ async function addEmployee() {
         db.query(`INSERT INTO employee (fname, lname, role_id, manager_id) VALUES ("${response.fname}", "${response.lname}", ${response.roleID}, ${response.managerID})`, (err, result) => {
             if(err){
                 console.log(err)
-            } else {
             }
         });
     });

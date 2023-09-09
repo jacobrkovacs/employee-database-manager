@@ -10,6 +10,7 @@ const db = mysql.createConnection(
     }
 );
 
+
 let res = {}
 function getDept(){
     const mainMenu = require('../index');
@@ -27,7 +28,7 @@ function getDept(){
 
 function getRoles() {
     const mainMenu = require('../index');
-    db.query('SELECT role.title AS "Role", role.salary AS "Base Salary", department.department_name AS "Department" FROM role JOIN department ON role.department_id = department.id ORDER BY role.salary', (err, result) => {
+    db.query('SELECT role.title AS "Role", role.salary AS "Base Salary", department.department_name AS "Department" FROM role JOIN department ON role.department_id = department.id ORDER BY role.id', (err, result) => {
         if(err) {
             console.error(err)
         };
