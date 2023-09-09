@@ -32,6 +32,7 @@ db.query('SELECT id, title FROM role ORDER BY id', (err, result) => {
 })
 
 async function updateEmployee() {
+    const mainMenu = require('../index');
     console.log(choice)
     let prompt = await inquirer.prompt([
         {
@@ -48,12 +49,13 @@ async function updateEmployee() {
         },
     ])
     db.query(`UPDATE employee
-    SET role_id = 
+    SET role_id = ${prompt.role}
+    WHERE fname = "${prompt.employee}"
     `, (err, result) => {
         if(err) {
             console.error(err)
         };
     })
-
+    mainMenu();
 };
 module.exports = updateEmployee;
