@@ -18,6 +18,6 @@ VALUES ("Help Desk", 50000, 1),
        ("Payroll", 70000, 5);
 
 INSERT INTO employee (fname, lname, role_id, manager_id)
-VALUES ("Jacob", "Kovacs", 3, null),
-       ("Bruce", "Wayne", 3, 1),
-       ("Clark", "Kent", 3, 1);
+VALUES ("Jacob", "Kovacs", 5, null),
+       ("Bruce", "Wayne", 5, 1),
+       ("Clark", "Kent", 5, 1);

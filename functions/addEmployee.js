@@ -10,8 +10,9 @@ const db = mysql.createConnection(
     }
 );
 
-function addEmployee() {
-    inquirer.prompt([
+async function addEmployee() {
+    const mainMenu = require('../index')
+    await inquirer.prompt([
         {
             type: 'input',
             message: 'Employee First Name: ',
@@ -38,10 +39,10 @@ function addEmployee() {
             if(err){
                 console.log(err)
             } else {
-                console.log(result)
             }
-        })
-    })
+        });
+    });
+    mainMenu();
 };
 
 module.exports = addEmployee;

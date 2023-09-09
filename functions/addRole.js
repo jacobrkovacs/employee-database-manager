@@ -1,3 +1,4 @@
+const promisify = require('util').promisify;
 require('dotenv').config();
 const inquirer = require('inquirer');
 const mysql = require("mysql2");
@@ -10,8 +11,10 @@ const db = mysql.createConnection(
     }
 );
 
+
 async function addRole() {
-    await inquirer.prompt([
+    const mainMenu = require('../index')
+    let response = await inquirer.prompt([
             {
                 type: 'input',
                 message: 'What is the title of the new role? ',
@@ -27,15 +30,15 @@ async function addRole() {
                 message: 'What is the ID of the department this role belongs to? ',
                 name: 'dept'
             }
-        ])
-        .then((response) => {
-            db.query(`INSERT INTO role (title, salary, department_id) VALUES ("${response.title}", ${response.salary}, ${response.dept})`, (err,result) => {
-                if(err) {
-                    console.error(err)
-                };
-                console.log(result);
-            });
+        ]);
+        db.query(`INSERT INTO role (title, salary, department_id) VALUES ("${response.title}", ${response.salary}, ${response.dept})`, (err, result) => {
+            if(err) {
+                console.error(err)
+            };
         });
+        mainMenu()
 };
 
-module.exports = addRole;
+let addNewRole = promisify(addRole);
+
+module.exports = addNewRole;

@@ -1,36 +1,51 @@
-const [ getDept, getRoles, getEmployees ] = require('./functions/getTables.js');
-const addRole = require('./functions/addRole.js');
-const { exit } = require("process");
-const mainMenu = require("./functions/mainMenu.js");
+const inquirer = require('inquirer');
+const [ getDepartment, getAllRoles, getAllEmployees ] = require('./functions/getTables');
+const addNewRole = require('./functions/addRole.js');
 const addEmployee = require("./functions/addEmployee.js");
+const updateEmployee = require('./functions/updateEmployee.js');
+const { exit } = require("process");
 
-const main = async () => {
-    await mainMenu()
-    .then((response) => {
-        switch (response.choice) {
+function mainMenu() {
+    inquirer.prompt([
+        {
+            type: 'list',
+            message: 'What would you like to do?',
+            name: 'choice',
+            choices: [
+                'View All Departments',
+                'View All Roles',
+                'View All Employees',
+                'Add a Role',
+                'Add an Employee',
+                'Update an Employee Role',
+                'Exit'
+            ]
+        }
+    ]).then((res => {
+        switch (res.choice) {
             case 'View All Departments':
-                getDept();
+                getDepartment();
                 break;
             case 'View All Roles':
-                getRoles();
+                getAllRoles();
                 break;
             case 'View All Employees':
-                getEmployees()
+                getAllEmployees();
                 break;
             case 'Add a Role':
-                addRole();
+                addNewRole();
                 break;
             case 'Add an Employee':
                 addEmployee();
                 break;
             case 'Update an Employee Role':
-                //updateEmployee();
+                updateEmployee();
                 break;
             case 'Exit':
-                console.clear();
-                exit();
-        }
-    });
-    await main();
-}
-main();
+                return exit();
+        };
+    }))
+};
+mainMenu();
+
+module.exports = mainMenu;
