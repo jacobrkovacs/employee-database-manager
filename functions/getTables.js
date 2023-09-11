@@ -12,7 +12,7 @@ const db = mysql.createConnection(
 
 
 let res = {}
-function getDept(){
+async function getDept(){
     const mainMenu = require('../index');
     db.query('SELECT id AS "Department ID", department_name AS "Department Name" FROM department', (err, result) => {
         if(err) {
@@ -23,7 +23,6 @@ function getDept(){
     });
     console.table(res);
     mainMenu();
-    res = {}
 };
 
 function getRoles() {
@@ -37,7 +36,6 @@ function getRoles() {
     });
     console.table(res);
     mainMenu();
-    res = {};
 };
 
 function getEmployees() {
@@ -51,7 +49,6 @@ function getEmployees() {
     });
     console.table(res);
     mainMenu();
-    res = {};
 };
 
 let getDepartment = promisify(getDept);
